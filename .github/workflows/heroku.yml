@@ -10,17 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build docker image
-        run: docker build -t web .
-      - name: run docker image
-        run: docker run -d -p 80:80 -p 443:443 --name web -v $(pwd):/app -t web
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bnmo-backend"
           heroku_email: "rifqi.abdjul23@gmail.com"
-          stack: "container"
-          usedocker: true
         env:
           PORT: 3030
           JWT_SECRET: ${{secrets.JWT_SECRET}}

@@ -18,3 +18,8 @@ ENV EXCHANGE_RATE_API_KEY=${EXCHANGE_RATE_API_KEY}
 
 RUN npx prisma generate
 RUN npm run build
+
+RUN npx prisma db push
+RUN npx prisma db seed
+
+RUN npm run start
