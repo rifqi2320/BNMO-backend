@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build docker image
+        run: docker build -t web .
+      - name: run docker image
         run: docker run -d -p 80:80 -p 443:443 --name web -v $(pwd):/app -t web
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
