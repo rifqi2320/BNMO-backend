@@ -1,9 +1,9 @@
 FROM node:14
 
 WORKDIR /code
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
-COPY . .
+COPY . ./
 EXPOSE 3030
 
 ENV PORT=3030
