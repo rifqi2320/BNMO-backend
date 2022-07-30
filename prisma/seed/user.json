@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "username": "admin",
+    "name": "admin",
+    "password": "admin",
+    "isVerified": true
+  }
+]
