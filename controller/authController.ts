@@ -34,12 +34,13 @@ class AuthController {
     const token = JWTLib.sign({
       id: user.id,
       username: user.username,
-      name: user.name,
     });
     this._res.json({
       message: "Login Success",
       data: {
+        isError: false,
         token: token,
+        user,
       },
     });
 
@@ -84,6 +85,7 @@ class AuthController {
     };
 
     this._res.json({
+      isError: false,
       message: "Register Success",
       data: {
         user: result,

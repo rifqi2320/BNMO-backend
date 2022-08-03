@@ -11,11 +11,13 @@ const ErrorHandler: ErrorRequestHandler = (
   }
   if (err.httpCode) {
     res.status(err.httpCode).json({
+      isError: true,
       message: err.message,
       data: null,
     });
   } else {
     res.status(500).json({
+      isError: true,
       message: "Internal Server Error : " + err.message,
       data: null,
     });

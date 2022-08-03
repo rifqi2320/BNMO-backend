@@ -52,6 +52,7 @@ class TransactionController {
       },
     });
     this._res.json({
+      isError: false,
       message: "Get Self Transactions Success",
       data: {
         transactions: [...transactionsFrom, ...transactionsTo],
@@ -74,6 +75,7 @@ class TransactionController {
     });
 
     this._res.json({
+      isError: false,
       message: "Get Transactions Success",
       data: {
         transactions,
@@ -137,6 +139,7 @@ class TransactionController {
     ]);
 
     this._res.json({
+      isError: false,
       message: "Transfer Success",
       data: {
         transaction,
@@ -189,6 +192,7 @@ class TransactionController {
     });
 
     this._res.json({
+      isError: false,
       message: "Request Balance Success",
       data: {
         transaction,
@@ -222,6 +226,7 @@ class TransactionController {
     });
 
     this._res.json({
+      isError: false,
       message: "Delete Transaction Success",
       data: {
         deletedTransaction,
@@ -261,7 +266,7 @@ class TransactionController {
     });
     if (!userTo) throw new Err.BadRequestError("User not found");
 
-    const [transactionApproved, user] = await this.prisma.$transaction([
+    const [transactionApproved, _] = await this.prisma.$transaction([
       this.prisma.transaction.update({
         where: {
           id,
@@ -282,10 +287,10 @@ class TransactionController {
     ]);
 
     this._res.json({
+      isError: false,
       message: "Approve Request Balance Success",
       data: {
         transactionApproved,
-        user,
       },
     });
   }
@@ -293,6 +298,7 @@ class TransactionController {
   async getCurrencyList(): Promise<void> {
     const currencies = await CurrencyConverter.getCurrencyList();
     this._res.json({
+      isError: false,
       message: "Get Currency List Success",
       data: {
         currencies,

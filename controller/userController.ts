@@ -24,14 +24,16 @@ class UserController {
       select: {
         id: true,
         username: true,
-        name: true,
         role: true,
+        photoID: true,
+        balance: true,
         isVerified: true,
         createdAt: true,
         updatedAt: true,
       },
     });
     this._res.json({
+      isError: false,
       message: "Get Users Success",
       data: {
         users,
@@ -55,7 +57,6 @@ class UserController {
         select: {
           id: true,
           username: true,
-          name: true,
           role: true,
           isVerified: true,
           createdAt: true,
@@ -63,6 +64,7 @@ class UserController {
         },
       });
       this._res.json({
+        isError: false,
         message: "Verify User Success",
         data: {
           user,
