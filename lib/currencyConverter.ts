@@ -10,6 +10,7 @@ class CurrencyConverter {
   }
 
   async getCurrencyList(): Promise<string[]> {
+    await this._checkIntegrity();
     const exchangeRate = await this.redis.get("exchange_rate");
     if (exchangeRate && exchangeRate["USD"]) {
       const rates = this._parse(exchangeRate);
@@ -66,8 +67,8 @@ class CurrencyConverter {
     if (timestamp) {
       const now = new Date().getTime();
       const diff = now - parseInt(timestamp);
-      // if diff is 24 hours or more, refresh
-      if (diff > 86400000) {
+      // if diff is 1 hours or more, refresh
+      if (diff > 3600000) {
         this.refresh();
       }
     } else {

@@ -2,7 +2,34 @@
   {
     "id": "1",
     "username": "admin",
-    "password": "admin",
-    "isVerified": true
+    "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "photoID": null,
+    "balance": 0.0,
+    "isVerified": true,
+    "role": "ADMIN",
+    "createdAt": "2022-08-03T01:57:24.758Z",
+    "updatedAt": "2022-08-03T01:57:24.758Z"
+  },
+  {
+    "id": "cl6ddxgce00020msrlp3wlokq",
+    "username": "naufal",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "photoID": "1dJNBnvaQHeZeiitb5c9veQ8bAOm3fqpT",
+    "balance": 148655.014582069,
+    "isVerified": true,
+    "role": "USER",
+    "createdAt": "2022-08-03T02:06:36.158Z",
+    "updatedAt": "2022-08-03T02:08:44.027Z"
+  },
+  {
+    "id": "cl6dqakrs01600mtdtv55xz2s",
+    "username": "rifqi",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "photoID": "1qsp63rV9Z3ncAi4TFoma0Rai3pMXJTG6",
+    "balance": 1000.0,
+    "isVerified": true,
+    "role": "USER",
+    "createdAt": "2022-08-03T07:52:43.816Z",
+    "updatedAt": "2022-08-03T07:57:04.590Z"
   }
 ]

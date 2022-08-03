@@ -14,7 +14,7 @@ import transaction from "./transaction.json";
     const hashedUser = user.map((item) => {
       return {
         ...item,
-        role: Role.ADMIN,
+        role: item.role === "ADMIN" ? Role.ADMIN : Role.USER,
         password: SHA256(item.password).toString(),
       };
     });

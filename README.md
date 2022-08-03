@@ -57,6 +57,10 @@
 
 - Dapat digunakan `npx prisma db seed` untuk melakukan seeding database.
 
+- Akun admin yang pada seeder mempunyai username `admin` dan password `admin`.
+
+- Akun user yang pada seeder mempunyai password `password`.
+
 <br/>
 <br/>
 <br/>

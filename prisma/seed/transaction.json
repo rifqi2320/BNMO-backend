@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "cl6dqc6vi01880mtdoefm93g9",
+    "from": null,
+    "to": "naufal",
+    "description": "Request Balance 10 USD",
+    "amount": 149006.0010825882,
+    "approved": true,
+    "approvedAt": "2022-08-03T07:57:29.359Z",
+    "createdAt": "2022-08-03T07:53:59.118Z"
+  },
+  {
+    "id": "cl6dqjjmf02930mtdexyb8k29",
+    "from": null,
+    "to": "naufal",
+    "description": "Request Balance -1 USD",
+    "amount": -14902.59995974808,
+    "approved": false,
+    "approvedAt": null,
+    "createdAt": "2022-08-03T07:59:42.231Z"
+  },
+  {
+    "id": "cl6dqkm9203240mtdonb47wxi",
+    "from": "cl6ddxgce00020msrlp3wlokq",
+    "to": "rifqi",
+    "description": "shopeefood kemarin",
+    "amount": 1000.0,
+    "approved": true,
+    "approvedAt": null,
+    "createdAt": "2022-08-03T08:00:32.294Z"
+  }
+]
