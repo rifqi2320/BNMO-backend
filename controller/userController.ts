@@ -16,6 +16,32 @@ class UserController {
     this.prisma = PrismaService.getClient();
   }
 
+  async getSelfData(): Promise<void> {
+    const { user } = this._res.locals;
+    const userData = await this.prisma.user.findUnique({
+      where: {
+        id: user.id,
+      },
+      select: {
+        id: true,
+        username: true,
+        role: true,
+        photoID: true,
+        balance: true,
+        isVerified: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+    this._res.json({
+      isError: false,
+      message: "Get Self Data Success",
+      data: {
+        userData,
+      },
+    });
+  }
+
   async getUsers(): Promise<void> {
     const users = await this.prisma.user.findMany({
       where: {

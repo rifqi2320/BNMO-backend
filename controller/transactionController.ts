@@ -30,6 +30,7 @@ class TransactionController {
         id: true,
         from: true,
         to: true,
+        description: true,
         amount: true,
         approved: true,
         approvedAt: true,
@@ -39,7 +40,7 @@ class TransactionController {
 
     const transactionsTo = await this.prisma.transaction.findMany({
       where: {
-        to: user.id,
+        to: user.username,
       },
       select: {
         id: true,
@@ -72,6 +73,9 @@ class TransactionController {
         approvedAt: true,
         createdAt: true,
       },
+      where: {
+        from: null,
+      },
     });
 
     this._res.json({
@@ -86,7 +90,7 @@ class TransactionController {
   async transfer(): Promise<void> {
     const body: TransferBodyReq = this._req.body;
     AJVLib.validateRequest(Sch.TransferReqBodySchema, body);
-    const { to, amount } = body;
+    const { to, amount, description } = body;
     const { user } = this._res.locals;
 
     const userFrom = await this.prisma.user.findUnique({
@@ -111,12 +115,16 @@ class TransactionController {
     });
     if (!userTo) throw new Err.BadRequestError("User not found");
 
+    if (userFrom!.id === userTo!.id)
+      throw new Err.BadRequestError("Cannot transfer to yourself");
+
     const [transaction, _, __] = await this.prisma.$transaction([
       this.prisma.transaction.create({
         data: {
           from: user.id,
           to,
           amount,
+          description,
           approved: true,
         },
       }),
@@ -159,12 +167,13 @@ class TransactionController {
       },
       select: {
         id: true,
+        username: true,
         balance: true,
       },
     });
     const transactions = await this.prisma.transaction.findMany({
       where: {
-        to: user.id,
+        to: user.username,
         approved: false,
       },
     });
@@ -184,7 +193,7 @@ class TransactionController {
 
     const transaction = await this.prisma.transaction.create({
       data: {
-        to: user.id,
+        to: user.username,
         description: `Request Balance ${oamount} ${currency}`,
         amount,
         approved: false,
@@ -257,7 +266,7 @@ class TransactionController {
 
     const userTo = await this.prisma.user.findUnique({
       where: {
-        id: transaction.to,
+        username: transaction.to,
       },
       select: {
         id: true,
@@ -278,7 +287,7 @@ class TransactionController {
       }),
       this.prisma.user.update({
         where: {
-          id: transaction.to,
+          id: userTo.id,
         },
         data: {
           balance: userTo.balance + transaction.amount,

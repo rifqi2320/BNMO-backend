@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AsyncRoute, AsyncMiddleware } from "../lib/asyncWrapper";
 import AuthMiddleware from "../middleware/authentication";
 import TransactionController from "../controller/transactionController";
+import UserController from "../controller/userController";
 
 const UserRouter = Router();
 UserRouter.use(AsyncMiddleware(AuthMiddleware(false)));
@@ -35,5 +36,13 @@ TransactionRouter.get(
 );
 
 UserRouter.use("/transaction", TransactionRouter);
+
+// Get Self Data
+UserRouter.get(
+  "/self",
+  AsyncRoute(async (req: any, res: any) => {
+    await new UserController(req, res).getSelfData();
+  })
+);
 
 export default UserRouter;

@@ -6,12 +6,12 @@ import PublicRouter from "./routes/public";
 import AdminRouter from "./routes/admin";
 import UserRouter from "./routes/user";
 import ErrorHandler from "./middleware/errorHandler";
-import CORS from "./middleware/cors";
+import cors from "cors";
 
 const app: Express = express();
 
 app.use(express.json());
-app.use(CORS);
+app.use(cors());
 
 // Set up routes
 app.use(PublicRouter);
