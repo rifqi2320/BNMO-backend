@@ -15,13 +15,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bnmo-backend"
           heroku_email: "rifqi.abdjul23@gmail.com"
-        env:
-          PORT: 3030
-          JWT_SECRET: ${{secrets.JWT_SECRET}}
-          JWT_EXPIRE: ${{secrets.JWT_EXPIRE}}
-          DATABASE_URL: ${{secrets.DATABASE_URL}}
-          REDIS_URL: ${{secrets.REDIS_URL}}
-          GOOGLE_PRIVATE_KEY: ${{secrets.GOOGLE_PRIVATE_KEY}}
-          GOOGLE_CLIENT_EMAIL: ${{secrets.GOOGLE_CLIENT_EMAIL}}
-          FOLDER_ID: ${{secrets.FOLDER_ID}}
-          EXCHANGE_RATE_API_KEY: ${{secrets.EXCHANGE_RATE_API_KEY}}
